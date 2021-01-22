@@ -1,6 +1,13 @@
 import styled from 'styled-components';
 import { BRAND_COLORS } from '../../constants/colors';
 
+export const MainWrapperStyled = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 20px;
+`;
+
 export const customScrollBarStyles = `*::-webkit-scrollbar {
   background-color:#fff;
   width:16px
@@ -27,7 +34,6 @@ export const customScrollBarStyles = `*::-webkit-scrollbar {
 export const TableWrapperStyled = styled.div`
   height: 100%;
   width: 100%;
-  padding: 20px;
 
   &&.ag-theme-balham {
     .ag-header {
@@ -85,6 +91,28 @@ export const FiltersRowStyled = styled.div`
 
 export const SelectWrapperStyled = styled.div`
   width: 250px;
-  margin-right: 10px;
+  margin-right: 20px;
+  font-size: 14px;
+`;
+
+export const FilterLabelStyled = styled.label`
+  font-weight: bold;
+  font-size: 14px;
+  margin-bottom: 10px;
+  display: flex;
+`;
+
+export const ToggleLabelStyled = styled.label`
+  display: flex;
+  align-items: center;
+`;
+
+export const ToggleWrapperStyled = styled.label`
+  display: flex;
+  align-items: center;
+
+  .react-toggle {
+    margin: 0 10px;
+  }
 `;
 

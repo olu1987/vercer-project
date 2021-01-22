@@ -23,7 +23,6 @@ export const useTradesContainer = () => {
     }
     return options;
   }
-  console.log(getOptionsFromData(tradesData, tradesDataFields.PRODUCT_NAME.value));
   useEffect(() => {
     dispatch({
       type: actionTypes.GET_TRADES_DATA,

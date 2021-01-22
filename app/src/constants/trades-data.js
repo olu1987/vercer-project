@@ -21,7 +21,17 @@ export const tradesDataFields = {
   },
   SIDE: {
     label: 'Side',
-    value: 'side'
+    value: 'side',
+    options: {
+      BUY: {
+        label: 'Buy',
+        value: 'buy'
+      },
+      SELL: {
+        label: 'Sell',
+        value: 'sell'
+      }
+    }
   },
   START_DATE: {
     label: 'Start Date',
