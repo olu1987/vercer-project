@@ -1,0 +1,6 @@
+export const actionTypes = {
+  FULFILLED: '_FULFILLED',
+  REJECTED: '_REJECTED',
+  PENDING: '_PENDING',
+  GET_TRADES_DATA: 'GET_TRADES_DATA'
+};

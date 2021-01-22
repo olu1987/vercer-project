@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css?family=Lato:200,300,400,600,700,900|Nunito:200,300,400,600,700,900');
+@import '~ag-grid-community/dist/styles/ag-grid.css';
+@import '~ag-grid-community/dist/styles/ag-theme-balham.css';
+
+* {
+  box-sizing: border-box;
+  font-family: 'Nunito', 'Source Sans Pro', 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+  will-change: scroll-position;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  display: flex;
+}
+
+#root {
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
