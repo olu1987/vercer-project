@@ -24,7 +24,7 @@ export const customScrollBarStyles = `*::-webkit-scrollbar {
 
 *::-webkit-scrollbar-button { display:none }  `
 
-export const TableWrapper = styled.div`
+export const TableWrapperStyled = styled.div`
   height: 100%;
   width: 100%;
   padding: 20px;
@@ -77,3 +77,14 @@ export const TableWrapper = styled.div`
   }
   ${customScrollBarStyles} 
 `;
+
+export const FiltersRowStyled = styled.div`
+   display: flex;
+   padding-bottom: 10px;
+`;
+
+export const SelectWrapperStyled = styled.div`
+  width: 250px;
+  margin-right: 10px;
+`;
+
