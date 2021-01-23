@@ -1,5 +1,6 @@
 import { AgGridReact } from 'ag-grid-react';
 
+import TradePriceHeader from './TradePriceHeader';
 import Filters from './Filters';
 import SmallLoader from '../../components/SmallLoader';
 
@@ -11,7 +12,7 @@ import 'ag-grid-community/dist/styles/ag-theme-balham.css';
 
 import {
   TableWrapperStyled,
-  MainWrapperStyled
+  MainWrapperStyled,
 } from './style';
 
 
@@ -31,11 +32,16 @@ const TradesContainer = () => {
     setMinTradePrice,
     maxTradePrice,
     setMaxTradePrice,
-    loading
+    loading,
+    totalTradePrice
   } = useTradesContainer();
   return (
     <MainWrapperStyled>
       {loading && <SmallLoader />}
+      <TradePriceHeader
+        totalTradePrice={totalTradePrice}
+        dataLength={tradesTableData.length}
+      />
       <Filters
          productNameOptions={productNameOptions}
          brokerNameOptions={brokerNameOptions}

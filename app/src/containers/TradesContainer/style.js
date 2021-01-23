@@ -42,6 +42,9 @@ export const TableWrapperStyled = styled.div`
     .ag-root {
       border-color: #fff;
     }
+    .ag-root-wrapper {
+      border: none;
+    }
     .ag-horizontal-left-spacer {
       opacity: 0;
     }
@@ -82,43 +85,5 @@ export const TableWrapperStyled = styled.div`
     } 
   }
   ${customScrollBarStyles} 
-`;
-
-export const FiltersRowStyled = styled.div`
-   display: flex;
-   padding-bottom: 20px;
-`;
-
-export const SelectWrapperStyled = styled.div`
-  width: 250px;
-  margin-right: 20px;
-  font-size: 14px;
-`;
-
-export const TradePriceRangeStyled = styled.div`
-  width: 350px;
-  margin: 20px 20px 0 auto;
-  font-size: 14px;
-`;
-
-export const FilterLabelStyled = styled.label`
-  font-weight: bold;
-  font-size: 14px;
-  margin-bottom: 10px;
-  display: flex;
-`;
-
-export const ToggleLabelStyled = styled.label`
-  display: flex;
-  align-items: center;
-`;
-
-export const ToggleWrapperStyled = styled.label`
-  display: flex;
-  align-items: center;
-
-  .react-toggle {
-    margin: 0 10px;
-  }
 `;
 

@@ -7,10 +7,10 @@ import { tradesDataFields } from '../../../constants/trades-data';
 import {
   FiltersRowStyled,
   SelectWrapperStyled,
-  ToggleLabelStyled,
   FilterLabelStyled,
+  ToggleStyled,
   ToggleWrapperStyled
-} from '../style';
+} from './style';
 
 const Filters = ({
   productNameOptions,
@@ -46,20 +46,6 @@ const Filters = ({
         isClearable
       />
     </SelectWrapperStyled>
-    <ToggleLabelStyled>
-      <SelectWrapperStyled>
-        <FilterLabelStyled>{tradesDataFields.SIDE.label}</FilterLabelStyled>
-        <ToggleWrapperStyled>
-          <span>{tradesDataFields.SIDE.options.BUY.label}</span>
-          <Toggle
-            checked={isSellMode}
-            icons={false}
-            onChange={onToggleChange} 
-          />
-          <span>{tradesDataFields.SIDE.options.SELL.label}</span>
-        </ToggleWrapperStyled>
-      </SelectWrapperStyled>
-    </ToggleLabelStyled>
     <SelectWrapperStyled>
       <FilterLabelStyled>{tradesDataFields.MIN_TRADE_PRICE}</FilterLabelStyled>
       <Select
@@ -78,6 +64,18 @@ const Filters = ({
         isClearable
       />
     </SelectWrapperStyled>
+    <ToggleStyled>
+      <FilterLabelStyled>{tradesDataFields.SIDE.label}</FilterLabelStyled>
+      <ToggleWrapperStyled>
+        <span>{tradesDataFields.SIDE.options.BUY.label}</span>
+        <Toggle
+          checked={isSellMode}
+          icons={false}
+          onChange={onToggleChange} 
+        />
+        <span>{tradesDataFields.SIDE.options.SELL.label}</span>
+      </ToggleWrapperStyled>
+    </ToggleStyled>
   </FiltersRowStyled>
 );
 

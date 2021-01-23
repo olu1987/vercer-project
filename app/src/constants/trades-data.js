@@ -16,7 +16,7 @@ export const tradesDataFields = {
     value: 'matched'
   },
   PRODUCT_NAME: {
-    label: 'Product Name',
+    label: 'Product',
     value: 'product_name'
   },
   SIDE: {
@@ -54,9 +54,11 @@ export const tradesDataFields = {
     value: 'trade_price',
   },
   BROKER_NAME: {
-    label: 'Broker Name',
+    label: 'Broker',
     value: 'broker_name'
   },
   MAX_TRADE_PRICE: 'Max Trade Price',
-  MIN_TRADE_PRICE: 'Min Trade Price'
+  MIN_TRADE_PRICE: 'Min Trade Price',
+  TOTAL: 'Total',
+  AVERAGE: 'Average'
 }

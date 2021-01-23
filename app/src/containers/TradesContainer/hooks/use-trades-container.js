@@ -14,6 +14,7 @@ export const useTradesContainer = () => {
   const [selectedSaleType, setSelectedSaleType] = useState(tradesDataFields.SIDE.options.BUY.value);
   const [minTradePrice, setMinTradePrice] = useState(null);
   const [maxTradePrice, setMaxTradePrice] = useState(null);
+  const [totalTradePrice, setTotalTradePrice] = useState(0);
   const dispatch = useDispatch();
   const { trades: tradesData, loading } = useSelector(state => state.tradesReducer);
   const isSellMode = selectedSaleType === tradesDataFields.SIDE.options.SELL.value;
@@ -31,19 +32,21 @@ export const useTradesContainer = () => {
     minTradePrice,
     maxTradePrice
   ) => {
-    const filtered = [];
+    const filteredData = [];
+    let tradePrice = 0;
     for (let i = 0; i < data.length; i++) {
       const entry = data[i];
       if (entry[tradesDataFields.SIDE.value] === selectedSaleType
         && (!selectedProductName || entry[tradesDataFields.PRODUCT_NAME.value] === selectedProductName.value)
         && (!selectedBrokerName || entry[tradesDataFields.BROKER_NAME.value] === selectedBrokerName.value)
-        && (!minTradePrice || parseInt(entry[tradesDataFields.TRADE_PRICE.value]) > minTradePrice.value)
-        && (!maxTradePrice || parseInt(entry[tradesDataFields.TRADE_PRICE.value]) < maxTradePrice.value))
+        && (!minTradePrice || parseFloat(entry[tradesDataFields.TRADE_PRICE.value]) > minTradePrice.value)
+        && (!maxTradePrice || parseFloat(entry[tradesDataFields.TRADE_PRICE.value]) < maxTradePrice.value))
         {
-          filtered.push(entry);
+          filteredData.push(entry);
+          tradePrice += parseFloat(entry[tradesDataFields.TRADE_PRICE.value]);
         }
     }
-    return filtered;
+    return { filteredData, tradePrice };
   };
 
   const getOptionsFromData = (data, field) => {
@@ -86,14 +89,19 @@ export const useTradesContainer = () => {
   }, []);
 
   useEffect(() => {
-    setTradesTableData(getTradesTableData(
+    const {
+      filteredData,
+      tradePrice
+    } = getTradesTableData(
       tradesData,
       selectedSaleType,
       selectedProductName,
       selectedBrokerName,
       minTradePrice,
       maxTradePrice
-    ));
+    )
+    setTradesTableData(filteredData);
+    setTotalTradePrice(tradePrice)
   }, [tradesData, selectedProductName, selectedBrokerName, selectedSaleType, minTradePrice, maxTradePrice]);
   
   useEffect(() => {
@@ -120,6 +128,7 @@ export const useTradesContainer = () => {
     maxTradePrice,
     setMaxTradePrice,
     tradePriceOptions,
-    loading
+    loading,
+    totalTradePrice
   }
 }
