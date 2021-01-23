@@ -3,7 +3,6 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { actionTypes } from '../../../constants/action-types';
 import { tradesDataFields } from '../../../constants/trades-data';
-import { memoizedArrayToMap } from '../../../utils';
 
 export const useTradesContainer = () => {
   const [tradesTableData, setTradesTableData] = useState([]);
@@ -16,9 +15,8 @@ export const useTradesContainer = () => {
   const [minTradePrice, setMinTradePrice] = useState(null);
   const [maxTradePrice, setMaxTradePrice] = useState(null);
   const dispatch = useDispatch();
-  const tradesData = useSelector(state => state.tradesReducer.trades);
+  const { trades: tradesData, loading } = useSelector(state => state.tradesReducer);
   const isSellMode = selectedSaleType === tradesDataFields.SIDE.options.SELL.value;
-
   const onToggleChange = () => {
     return setSelectedSaleType(selectedSaleType === tradesDataFields.SIDE.options.SELL.value
       ? tradesDataFields.SIDE.options.BUY.value
@@ -61,7 +59,7 @@ export const useTradesContainer = () => {
     return options;
   };
 
-  const getTradePriceOptions = (data, field) => {
+  const getPriceOptions = (data, field) => {
     const prices = [];
     const options = [];
     for (let i = 0; i < data.length; i++) {
@@ -101,7 +99,7 @@ export const useTradesContainer = () => {
   useEffect(() => {
     setProductNameOptions(getOptionsFromData(tradesData, tradesDataFields.PRODUCT_NAME.value));
     setBrokerNameOptions(getOptionsFromData(tradesData, tradesDataFields.BROKER_NAME.value));
-    setTradePriceOptions(getTradePriceOptions(tradesData, tradesDataFields.TRADE_PRICE.value));
+    setTradePriceOptions(getPriceOptions(tradesData, tradesDataFields.TRADE_PRICE.value));
   }, [tradesData]);
 
   return {
@@ -121,6 +119,7 @@ export const useTradesContainer = () => {
     setMinTradePrice,
     maxTradePrice,
     setMaxTradePrice,
-    tradePriceOptions
+    tradePriceOptions,
+    loading
   }
 }
