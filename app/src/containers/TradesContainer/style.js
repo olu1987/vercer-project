@@ -5,7 +5,7 @@ export const MainWrapperStyled = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding: 20px;
+  padding: 40px;
 `;
 
 export const customScrollBarStyles = `*::-webkit-scrollbar {
@@ -86,12 +86,18 @@ export const TableWrapperStyled = styled.div`
 
 export const FiltersRowStyled = styled.div`
    display: flex;
-   padding-bottom: 10px;
+   padding-bottom: 20px;
 `;
 
 export const SelectWrapperStyled = styled.div`
   width: 250px;
   margin-right: 20px;
+  font-size: 14px;
+`;
+
+export const TradePriceRangeStyled = styled.div`
+  width: 350px;
+  margin: 20px 20px 0 auto;
   font-size: 14px;
 `;
 

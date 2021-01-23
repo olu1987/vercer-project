@@ -1,4 +1,8 @@
+import numeral from 'numeral';
+import moment from 'moment';
 import { tradesDataFields } from '../constants/trades-data';
+
+const numberValueFormatter = params => numeral(params.value).format('0,0.00');
 
 export const tradesTableColumns = [
   {
@@ -38,6 +42,7 @@ export const tradesTableColumns = [
   {
     headerName: tradesDataFields.TIME_CREATED.label,
     field: tradesDataFields.TIME_CREATED.value,
+    valueFormatter: params => moment(params.value).format('DD MMM YYYY HH:mm:ss')
   },
   {
     headerName: tradesDataFields.TRADE_DATE.label,
@@ -47,11 +52,13 @@ export const tradesTableColumns = [
   {
     headerName: tradesDataFields.TRADE_DISPLAY_VOLUME.label,
     field: tradesDataFields.TRADE_DISPLAY_VOLUME.value,
+    valueFormatter: numberValueFormatter,
     width: 170
   },
   {
     headerName: tradesDataFields.TRADE_PRICE.label,
     field: tradesDataFields.TRADE_PRICE.value,
+    valueFormatter: numberValueFormatter,
     width: 140
   },
 ];

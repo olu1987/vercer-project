@@ -1,6 +1,7 @@
 import { AgGridReact } from 'ag-grid-react';
 import Select from 'react-select';
-import Toggle from 'react-toggle'
+import Toggle from 'react-toggle';
+import 'rc-slider/assets/index.css';
 
 import { tradesTableColumns } from '../../config/trades-table-config';
 import { tradesDataFields } from '../../constants/trades-data';
@@ -22,9 +23,20 @@ import {
 
 const TradesContainer = () => {
   const {
-    tradesData,
+    tradesTableData,
     productNameOptions,
-    brokerNameOptions
+    brokerNameOptions,
+    selectedProductName,
+    setSelectedProductName,
+    selectedBrokerName,
+    setSelectedBrokerName,
+    onToggleChange,
+    isSellMode,
+    tradePriceOptions,
+    minTradePrice,
+    setMinTradePrice,
+    maxTradePrice,
+    setMaxTradePrice
   } = useTradesContainer();
   return (
     <MainWrapperStyled>
@@ -33,6 +45,8 @@ const TradesContainer = () => {
           <FilterLabelStyled>{tradesDataFields.PRODUCT_NAME.label}</FilterLabelStyled>
           <Select
             options={productNameOptions}
+            value={selectedProductName}
+            onChange={val => setSelectedProductName(val)}
             isClearable
           />
         </SelectWrapperStyled>
@@ -40,6 +54,8 @@ const TradesContainer = () => {
           <FilterLabelStyled>{tradesDataFields.BROKER_NAME.label}</FilterLabelStyled>
           <Select
             options={brokerNameOptions}
+            value={selectedBrokerName}
+            onChange={val => setSelectedBrokerName(val)}
             isClearable
           />
         </SelectWrapperStyled>
@@ -49,18 +65,37 @@ const TradesContainer = () => {
             <ToggleWrapperStyled>
               <span>{tradesDataFields.SIDE.options.BUY.label}</span>
               <Toggle
-                defaultChecked
+                checked={isSellMode}
                 icons={false}
-                onChange={() => {}} />
+                onChange={onToggleChange} 
+              />
               <span>{tradesDataFields.SIDE.options.SELL.label}</span>
             </ToggleWrapperStyled>
           </SelectWrapperStyled>
         </ToggleLabelStyled>
+        <SelectWrapperStyled>
+          <FilterLabelStyled>{tradesDataFields.MIN_TRADE_PRICE}</FilterLabelStyled>
+          <Select
+            options={tradePriceOptions}
+            value={minTradePrice}
+            onChange={val => setMinTradePrice(val)}
+            isClearable
+          />
+        </SelectWrapperStyled>
+        <SelectWrapperStyled>
+          <FilterLabelStyled>{tradesDataFields.MAX_TRADE_PRICE}</FilterLabelStyled>
+          <Select
+            options={tradePriceOptions}
+            value={maxTradePrice}
+            onChange={val => setMaxTradePrice(val)}
+            isClearable
+          />
+        </SelectWrapperStyled>
       </FiltersRowStyled>
       <TableWrapperStyled  className="ag-theme-balham">
         <AgGridReact
           columnDefs={tradesTableColumns}
-          rowData={tradesData}
+          rowData={tradesTableData}
           headerHeight={50}
           rowHeight={40}
           defaultColDef={{

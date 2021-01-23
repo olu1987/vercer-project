@@ -51,10 +51,12 @@ export const tradesDataFields = {
   },
   TRADE_PRICE: {
     label: 'Trade Price',
-    value: 'trade_price'
+    value: 'trade_price',
   },
   BROKER_NAME: {
     label: 'Broker Name',
     value: 'broker_name'
   },
+  MAX_TRADE_PRICE: 'Max Trade Price',
+  MIN_TRADE_PRICE: 'Min Trade Price'
 }
